@@ -6,7 +6,7 @@
   <meta name="x-apple-disable-message-reformatting">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Daily Market Brief — {{ date }}</title>
-  <link rel="stylesheet" href="../../templates/newsletter.css">
+  <link rel="stylesheet" href="newsletter.css">
   <style>
     /* Email client optimization */
     table { border-spacing: 0; border-collapse: collapse; }
@@ -27,15 +27,11 @@
        HERO BANNER
   ════════════════════════════════════════ -->
   <div class="hero">
-    <img src="../../templates/NI_Technologies_logo.jpg" alt="NI Technologies Logo" class="logo-top-right">
+    <img src="NI_Technologies_logo.jpg" alt="NI Technologies Logo" class="logo-top-right">
     <div class="hero-inner">
       <div class="hero-brand">
-        <div>
-          <div class="hero-brand-name">Northern Invest</div>
-          <div class="hero-brand-tagline">Independent. Disciplined. Aligned.</div>
         </div>
-        <div style="margin-left:auto; text-align:right;">
-          <div style="font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);">Strategic Outlook</div>
+        <div class="hero-brand-outlet">
         </div>
       </div>
       <div class="hero-tag">Weekly Market Brief</div>
@@ -112,41 +108,41 @@
     <div class="eyebrow">Top Stories</div>
     
     {% for story in top_stories %}
-    <div class="story-card" style="margin-bottom:24px; padding:16px; border-left:4px solid #1f2937; background-color:#f9fafb;">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
-        <h3 style="margin:0; font-size:16px; font-weight:700; color:#1f2937; flex:1; margin-right:10px;">
+    <div class="story-card">
+      <div class="story-title-wrapper">
+        <h3 class="story-title">
           {{ story.title }}
         </h3>
       </div>
       
-      <div style="font-size:12px; color:#6b7280; margin-bottom:12px; line-height:1.5;">
+      <div class="story-source">
         <strong>Source:</strong> {{ story.source }} | 
         <strong>Published:</strong> {{ story.published }} | 
-        <a href="{{ story.link }}" style="color:#2563eb; text-decoration:none;">Read Full Article →</a>
+        <a href="{{ story.link }}">Read Full Article →</a>
       </div>
       
-      <div style="margin-bottom:12px;">
-        <div style="font-size:13px; color:#374151; margin-bottom:10px;">
-          <strong style="color:#6366f1;">📝 Summary:</strong> {{ story.summary }}
+      <div class="story-section">
+        <div class="story-section-text">
+          <strong class="story-summary-label">📝 Summary:</strong> {{ story.summary }}
         </div>
       </div>
       
-      <div style="margin-bottom:12px;">
-        <div style="font-size:13px; color:#374151; margin-bottom:10px;">
-          <strong style="color:#f59e0b;">💡 Why it matters:</strong> {{ story.impact_explanation }}
+      <div class="story-section">
+        <div class="story-section-text">
+          <strong class="story-impact-label">💡 Why it matters:</strong> {{ story.impact_explanation }}
         </div>
       </div>
       
       <div>
-        <div style="font-size:13px;">
-          <strong style="color:#10b981;">📈 Market Impact:</strong> 
+        <div class="story-market-impact">
+          <strong class="story-market-label">📈 Market Impact:</strong> 
           {% set impact_lower = story.market_impact_sentiment | lower %}
           {% if "bullish" in impact_lower %}
-            <span style="color:#10b981; font-weight:700;">{{ story.market_impact_sentiment }}</span>
+            <span class="sentiment-bullish">{{ story.market_impact_sentiment }}</span>
           {% elif "bearish" in impact_lower %}
-            <span style="color:#ef4444; font-weight:700;">{{ story.market_impact_sentiment }}</span>
+            <span class="sentiment-bearish">{{ story.market_impact_sentiment }}</span>
           {% else %}
-            <span style="color:#6b7280; font-weight:700;">{{ story.market_impact_sentiment }}</span>
+            <span class="sentiment-neutral">{{ story.market_impact_sentiment }}</span>
           {% endif %}
           | {{ story.market_impact_sector }} | {{ story.market_impact_detail }}
         </div>
@@ -166,7 +162,7 @@
     <div class="section-title">International Index Performance</div>
 
     {% if global_market_insights %}
-    <ul class="brief-list" style="margin-bottom:22px;">
+    <ul class="brief-list">
       {% for insight in global_market_insights %}
       <li>{{ insight }}</li>
       {% endfor %}
@@ -220,7 +216,7 @@
 
     {% set sorted_factors = style_factors | sort(attribute='wtd_sort', reverse=True) %}
     {% if sorted_factors %}
-    <div class="insight-grid" style="margin-bottom:22px;">
+    <div class="insight-grid">
       <div class="insight-card green">
         <div class="ic-label">Leading Factor</div>
         <div class="ic-value">{{ sorted_factors[0].name }} {{ sorted_factors[0].wtd }}</div>
@@ -330,11 +326,11 @@
   ════════════════════════════════════════ -->
   <div class="footer">
     <p>NorthernInvest Technologies Inc. &nbsp;·&nbsp; Daily Market Brief &nbsp;·&nbsp; {{ date }}</p>
-    <p style="margin-top:6px;">
+    <p>
       <a href="#">Unsubscribe</a> &nbsp;|&nbsp; <a href="#">View Archive</a> &nbsp;|&nbsp; <a href="#">Manage Preferences</a>
     </p>
-    <p style="margin-top:8px; font-size:10px; opacity:0.5;">Independent. Disciplined. Aligned. &nbsp;·&nbsp; Rooted in Canada. Investing for Generations.</p>
-    <p style="margin-top:6px; font-size:10px; opacity:0.4;">Generated {{ generated_at_ist }} ({{ generated_at }})</p>
+    <p class="footer-meta">Independent. Disciplined. Aligned. &nbsp;·&nbsp; Rooted in Canada. Investing for Generations.</p>
+    <p class="footer-meta-small">Generated {{ generated_at_ist }} ({{ generated_at }})</p>
   </div>
 
 </div><!-- /container -->

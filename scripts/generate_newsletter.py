@@ -250,14 +250,31 @@ def prepare_context(articles: List[Dict], market_data: Optional[Dict] = None) ->
 
     formatted_articles = []
     for art in sorted_articles:
+        # Parse market_impact into sentiment, sector, and detail
+        market_impact_text = art.get("market_impact", "")
+        market_impact_sentiment = "Neutral"
+        market_impact_sector = ""
+        market_impact_detail = ""
+        
+        if market_impact_text:
+            parts = [p.strip() for p in market_impact_text.split("|")]
+            if len(parts) >= 1:
+                market_impact_sentiment = parts[0]
+            if len(parts) >= 2:
+                market_impact_sector = parts[1]
+            if len(parts) >= 3:
+                market_impact_detail = parts[2]
+        
         formatted_articles.append({
             "title": art.get("title", "Untitled"),
             "link": art.get("link", "#"),
             "source": art.get("source", "Unknown"),
             "published": format_iso_date(art.get("published_iso") or art.get("published")),
-            "concise_summary": art.get("concise_summary", "Summary unavailable."),
-            "why_it_matters": art.get("why_it_matters", ""),
-            "market_impact": art.get("market_impact", ""),
+            "summary": art.get("concise_summary", "Summary unavailable."),
+            "impact_explanation": art.get("why_it_matters", ""),
+            "market_impact_sentiment": market_impact_sentiment,
+            "market_impact_sector": market_impact_sector,
+            "market_impact_detail": market_impact_detail,
         })
 
     now = datetime.now(timezone.utc)
@@ -269,6 +286,7 @@ def prepare_context(articles: List[Dict], market_data: Optional[Dict] = None) ->
         "generated_at": now.strftime("%Y-%m-%d %H:%M:%S UTC"),
         "generated_at_ist": now_ist.strftime("%Y-%m-%d %I:%M %p IST"),
         "articles": formatted_articles,
+        "top_stories": formatted_articles,
         # Market report fields — populated from market_data if available
         "executive_summary": None,
         "key_themes": [],
@@ -328,7 +346,7 @@ def save_newsletter(content: str, output_path: Path) -> Path:
 # ============================================================================
 # MAIN PIPELINE
 # ============================================================================
-def run_generation_pipeline() -> Optional[Tuple[Path, Path]]:
+def run_generation_pipeline() -> Optional[Tuple[Path, Path, Path]]:
     """Execute the complete newsletter generation & archival pipeline."""
     logger.info("🚀 === Starting Newsletter Generation ===")
 
@@ -351,9 +369,28 @@ def run_generation_pipeline() -> Optional[Tuple[Path, Path]]:
 
     html_path = save_newsletter(html_content, archive_dir / "newsletter.html")
     md_path = save_newsletter(md_content, archive_dir / "newsletter.md")
+    
+    # Copy CSS file to archive directory
+    css_source = TEMPLATE_DIR / "newsletter.css"
+    css_path = archive_dir / "newsletter.css"
+    if css_source.exists():
+        css_content = css_source.read_text(encoding="utf-8")
+        save_newsletter(css_content, css_path)
+    else:
+        logger.warning(f"⚠️  CSS file not found at {css_source}")
+    
+    # Copy logo file to archive directory
+    logo_source = TEMPLATE_DIR / "NI_Technologies_logo.jpg"
+    logo_path = archive_dir / "NI_Technologies_logo.jpg"
+    if logo_source.exists():
+        import shutil
+        shutil.copy2(logo_source, logo_path)
+        logger.info(f"💾 Copied: NI_Technologies_logo.jpg")
+    else:
+        logger.warning(f"⚠️  Logo file not found at {logo_source}")
 
     logger.info("✅ Newsletter generation complete.")
-    return html_path, md_path
+    return html_path, md_path, css_path
 
 
 if __name__ == "__main__":

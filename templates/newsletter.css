@@ -386,6 +386,113 @@ body {
   letter-spacing: 0.3px;
 }
 .footer a { color: #29b6f6; text-decoration: none; }
+.footer p { margin: 0; }
+.footer p:not(:first-child) { margin-top: 6px; }
+.footer-meta { font-size: 10px; opacity: 0.5; margin-top: 8px; }
+.footer-meta-small { font-size: 10px; opacity: 0.4; margin-top: 6px; }
+
+/* ─── HERO BRAND OUTLET ─── */
+.hero-brand-outlet {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* ─── STRATEGIC OUTLOOK LABEL ─── */
+.strategic-outlook {
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ─── STORY CARDS ─── */
+.story-card {
+  margin-bottom: 24px;
+  padding: 16px;
+  border-left: 4px solid #1f2937;
+  background-color: #f9fafb;
+}
+
+.story-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.story-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.story-source {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.story-source a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.story-section {
+  margin-bottom: 12px;
+}
+
+.story-section-text {
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.story-summary-label {
+  color: #6366f1;
+}
+
+.story-impact-label {
+  color: #f59e0b;
+}
+
+.story-market-label {
+  color: #10b981;
+}
+
+.story-market-impact {
+  font-size: 13px;
+}
+
+.sentiment-bullish {
+  color: #10b981;
+  font-weight: 700;
+}
+
+.sentiment-bearish {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.sentiment-neutral {
+  color: #6b7280;
+  font-weight: 700;
+}
+
+/* ─── BRIEF LIST SPACING ─── */
+.brief-list {
+  margin-bottom: 22px;
+}
+
+/* ─── INSIGHT GRID SPACING ─── */
+.insight-grid {
+  margin-bottom: 22px;
+}
 
 /* ─── IMAGE RESPONSIVENESS ─── */
 img {
