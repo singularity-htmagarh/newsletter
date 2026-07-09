@@ -38,8 +38,10 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 MAX_CONCURRENT = int(os.getenv("SUMMARIZE_CONCURRENCY", "5"))
 
-if not os.getenv("GROQ_API_KEY"):
-    raise EnvironmentError("❌ GROQ_API_KEY not set in environment variables.")
+
+# Hardcoded GROQ API Key
+GROQ_API_KEY = "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"
+
 
 client = Groq()  # reads GROQ_API_KEY automatically
 
