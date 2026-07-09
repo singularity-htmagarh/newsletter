@@ -264,6 +264,45 @@ body {
 .neg { color: #c62828; }
 .flat { color: #7a8a9e; }
 
+/* ─── MAGNITUDE-BASED GRADIENT BACKGROUNDS ─── */
+/* Positive values - Green gradients */
+.pos-small { 
+  color: #2e7d52; 
+  background: linear-gradient(to right, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.08));
+}
+.pos-medium { 
+  color: #1b5e20; 
+  background: linear-gradient(to right, rgba(76, 175, 80, 0.35), rgba(76, 175, 80, 0.2));
+  font-weight: 700;
+}
+.pos-large { 
+  color: #fff; 
+  background: linear-gradient(to right, rgba(46, 125, 82, 0.85), rgba(76, 175, 80, 0.65));
+  font-weight: 700;
+}
+
+/* Negative values - Red gradients */
+.neg-small { 
+  color: #c62828; 
+  background: linear-gradient(to right, rgba(198, 40, 40, 0.15), rgba(198, 40, 40, 0.08));
+}
+.neg-medium { 
+  color: #b71c1c; 
+  background: linear-gradient(to right, rgba(198, 40, 40, 0.35), rgba(198, 40, 40, 0.2));
+  font-weight: 700;
+}
+.neg-large { 
+  color: #fff; 
+  background: linear-gradient(to right, rgba(198, 40, 40, 0.85), rgba(239, 83, 80, 0.65));
+  font-weight: 700;
+}
+
+/* Flat/Zero values */
+.flat-small {
+  color: #7a8a9e;
+  background: linear-gradient(to right, rgba(122, 138, 158, 0.1), rgba(122, 138, 158, 0.05));
+}
+
 /* ─── INSIGHT CALLOUTS ─── */
 .insight-grid {
   display: grid;
