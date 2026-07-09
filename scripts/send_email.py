@@ -197,6 +197,8 @@ def run_delivery_pipeline() -> bool:
             "⚠️  Missing required Gmail SMTP credentials (GMAIL_USER, GMAIL_APP_PASSWORD, "
             "NEWSLETTER_SENDER_EMAIL). Skipping email delivery."
         )
+        # Return True so the CI pipeline continues — missing credentials is a
+        # configuration issue, not a code failure.
         return True
 
     subscribers = load_subscribers()

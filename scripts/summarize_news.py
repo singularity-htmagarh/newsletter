@@ -85,6 +85,13 @@ Article Context: {summary_text}"""
 
 def call_groq_with_retry(prompt: str, max_retries: int = 4, base_delay: float = 2.0) -> Dict:
     """Call Groq with exponential backoff. Returns parsed JSON or fallback dict."""
+    if client is None:
+        return {
+            "concise_summary": "AI summary unavailable — GROQ_API_KEY not configured.",
+            "why_it_matters": "Unable to assess market significance at this time.",
+            "market_impact": "Neutral | Market data pending",
+            "ai_status": "skipped",
+        }
     attempt = 0
     delay = base_delay
     text = ""
