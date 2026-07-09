@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Daily Market Brief — Thursday, July 09, 2026</title>
+  <link rel="stylesheet" href="../../templates/newsletter.css">
+  <style>
+    /* Email client optimization */
+    table { border-spacing: 0; border-collapse: collapse; }
+    img { border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: nearest-neighbor; }
+    /* Prevent Outlook from messing with responsive layouts */
+    @media only screen and (max-width: 600px) {
+      body { width: 100% !important; }
+      table { width: 100% !important; }
+      .container { width: 100% !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+<div class="container">
+
+  <!-- ═══════════════════════════════════════
+       HERO BANNER
+  ════════════════════════════════════════ -->
+  <div class="hero">
+    <img src="../../templates/NI_Technologies_logo.jpg" alt="NI Technologies Logo" class="logo-top-right">
+    <div class="hero-inner">
+      <div class="hero-brand">
+        <div>
+          <div class="hero-brand-name">Northern Invest</div>
+          <div class="hero-brand-tagline">Independent. Disciplined. Aligned.</div>
+        </div>
+        <div style="margin-left:auto; text-align:right;">
+          <div style="font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);">Strategic Outlook</div>
+        </div>
+      </div>
+      <div class="hero-tag">Weekly Market Brief</div>
+      <div class="hero-title">
+Energy Leadership, Momentum Factor Dynamics      </div>
+      <div class="hero-meta">Report Date: <span>Thursday, July 09, 2026</span></div>
+    </div>
+
+    <!-- Signal strip: quick top-level numbers -->
+    <div class="signal-strip">
+      <div class="signal-item">
+        <span class="signal-label">Market Posture</span>
+          <span class="signal-value pos">Risk-On</span>
+      </div>
+      <div class="signal-item">
+        <span class="signal-label">S&amp;P 500 WTD</span>
+        <span class="signal-value pos">+0.68%</span>
+      </div>
+      <div class="signal-item">
+        <span class="signal-label">Leading Factor</span>
+        <span class="signal-value pos">Momentum +2.42%</span>
+      </div>
+      <div class="signal-item">
+        <span class="signal-label">Top Sector</span>
+        <span class="signal-value pos">Energy +3.35%</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       EXECUTIVE SUMMARY + MARKET SECTIONS (Jinja2)
+  ════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════
+       EXECUTIVE SUMMARY
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="eyebrow">Executive Summary</div>
+    <div class="exec-box">
+      <div class="key-drivers">
+        <div class="kd-label">Key Themes This Week</div>
+        <span class="driver-pill">Growth Leadership</span>
+        <span class="driver-pill">Risk-On Sentiment</span>
+        <span class="driver-pill">Energy Outperformance</span>
+        <span class="driver-pill">Materials Weakness</span>
+        <span class="driver-pill">Momentum Factor Leadership</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       TOP STORIES
+  ════════════════════════════════════════ -->
+
+
+  <!-- ═══════════════════════════════════════
+       GLOBAL MARKET PULSE
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="eyebrow">Global Market Pulse</div>
+    <div class="section-title">International Index Performance</div>
+
+    <ul class="brief-list" style="margin-bottom:22px;">
+      <li>Hang Seng (HK) outperformed global peers with a WTD return of +2.47%.</li>
+      <li>Nikkei 225 (Japan) saw the steepest weekly decline at -4.19%.</li>
+      <li>Significant regional divergence this week: a 6.7pp spread between the best and worst performers.</li>
+    </ul>
+
+    <table class="perf-table">
+      <thead>
+        <tr>
+          <th>Global Markets</th>
+          <th>WTD</th>
+          <th>MTD</th>
+          <th>QTD</th>
+          <th>YTD</th>
+          <th>2025</th>
+          <th>2024</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>S&P 500 (US)</td>
+          
+          <td class="pos-small">+0.68%</td>
+          <td class="pos-small">+0.47%</td>
+          <td class="pos-small">+0.47%</td>
+          <td class="pos-large">+9.25%</td>
+          <td class="pos-large">+16.75%</td>
+          <td class="pos-large">+23.84%</td>
+        </tr>
+        <tr>
+          <td>NASDAQ 100 (US)</td>
+          
+          <td class="pos-medium">+1.19%</td>
+          <td class="neg-medium">-1.97%</td>
+          <td class="neg-medium">-1.97%</td>
+          <td class="pos-large">+16.56%</td>
+          <td class="pos-large">+20.12%</td>
+          <td class="pos-large">+25.98%</td>
+        </tr>
+        <tr>
+          <td>Dow Jones (US)</td>
+          
+          <td class="neg-small">-0.67%</td>
+          <td class="pos-small">+0.43%</td>
+          <td class="pos-small">+0.43%</td>
+          <td class="pos-large">+8.64%</td>
+          <td class="pos-large">+13.61%</td>
+          <td class="pos-large">+12.96%</td>
+        </tr>
+        <tr>
+          <td>S&P/TSX Composite (CAD)</td>
+          
+          <td class="neg-small">-0.02%</td>
+          <td class="pos-medium">+1.10%</td>
+          <td class="pos-medium">+1.10%</td>
+          <td class="pos-large">+10.59%</td>
+          <td class="pos-large">+29.43%</td>
+          <td class="pos-large">+17.47%</td>
+        </tr>
+        <tr>
+          <td>FTSE 100 (UK)</td>
+          
+          <td class="neg-medium">-1.68%</td>
+          <td class="neg-small">-0.06%</td>
+          <td class="neg-small">-0.06%</td>
+          <td class="pos-large">+5.45%</td>
+          <td class="pos-large">+21.51%</td>
+          <td class="pos-large">+5.69%</td>
+        </tr>
+        <tr>
+          <td>CAC 40 (France)</td>
+          
+          <td class="neg-medium">-1.81%</td>
+          <td class="neg-small">-0.13%</td>
+          <td class="neg-small">-0.13%</td>
+          <td class="pos-medium">+2.17%</td>
+          <td class="pos-large">+10.42%</td>
+          <td class="neg-medium">-2.15%</td>
+        </tr>
+        <tr>
+          <td>DAX 40 (Germany)</td>
+          
+          <td class="neg-medium">-2.71%</td>
+          <td class="pos-small">+0.31%</td>
+          <td class="pos-small">+0.31%</td>
+          <td class="pos-medium">+2.56%</td>
+          <td class="pos-large">+23.01%</td>
+          <td class="pos-large">+18.85%</td>
+        </tr>
+        <tr>
+          <td>STOXX Europe 600 (EUR)</td>
+          
+          <td class="neg-medium">-1.48%</td>
+          <td class="pos-small">+0.24%</td>
+          <td class="pos-small">+0.24%</td>
+          <td class="pos-large">+8.11%</td>
+          <td class="pos-large">+17.42%</td>
+          <td class="pos-large">+5.39%</td>
+        </tr>
+        <tr>
+          <td>Nikkei 225 (Japan)</td>
+          
+          <td class="neg-large">-4.19%</td>
+          <td class="neg-large">-5.19%</td>
+          <td class="neg-large">-5.19%</td>
+          <td class="pos-large">+32.74%</td>
+          <td class="pos-large">+26.18%</td>
+          <td class="pos-large">+19.22%</td>
+        </tr>
+        <tr>
+          <td>Hang Seng (HK)</td>
+          
+          <td class="pos-medium">+2.47%</td>
+          <td class="pos-large">+5.76%</td>
+          <td class="pos-large">+5.76%</td>
+          <td class="neg-large">-5.58%</td>
+          <td class="pos-large">+27.77%</td>
+          <td class="pos-large">+17.67%</td>
+        </tr>
+        <tr>
+          <td>MSCI World (Developed)</td>
+          
+          <td class="pos-small">+0.51%</td>
+          <td class="pos-small">+0.51%</td>
+          <td class="pos-small">+0.51%</td>
+          <td class="pos-large">+9.64%</td>
+          <td class="pos-large">+21.69%</td>
+          <td class="pos-large">+19.13%</td>
+        </tr>
+        <tr>
+          <td>MSCI ACWI</td>
+          
+          <td class="pos-small">+0.55%</td>
+          <td class="pos-small">+0.03%</td>
+          <td class="pos-small">+0.03%</td>
+          <td class="pos-large">+10.97%</td>
+          <td class="pos-large">+22.87%</td>
+          <td class="pos-large">+17.77%</td>
+        </tr>
+        <tr>
+          <td>MSCI EM (Emerging)</td>
+          
+          <td class="pos-medium">+1.57%</td>
+          <td class="neg-medium">-2.46%</td>
+          <td class="neg-medium">-2.46%</td>
+          <td class="pos-large">+22.22%</td>
+          <td class="pos-large">+33.95%</td>
+          <td class="pos-large">+6.85%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       US EQUITY STYLE & FACTOR DYNAMICS
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="eyebrow">US Equity Style &amp; Factor Dynamics</div>
+    <div class="section-title">Style Factor Performance Update</div>
+
+    <div class="insight-grid" style="margin-bottom:22px;">
+      <div class="insight-card green">
+        <div class="ic-label">Leading Factor</div>
+        <div class="ic-value">Momentum +2.42%</div>
+        <div class="ic-sub">Best performing style this week</div>
+      </div>
+      <div class="insight-card red">
+        <div class="ic-label">Lagging Factor</div>
+        <div class="ic-value">Low Vol High Div -0.83%</div>
+        <div class="ic-sub">Weakest performing style this week</div>
+      </div>
+    </div>
+
+    <table class="perf-table">
+      <thead>
+        <tr>
+          <th>Style Factors</th>
+          <th>WTD</th>
+          <th>MTD</th>
+          <th>QTD</th>
+          <th>YTD</th>
+          <th>2025</th>
+          <th>2024</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Momentum</td>
+          
+          <td class="pos-medium">+2.42%</td>
+          <td class="neg-large">-5.44%</td>
+          <td class="neg-large">-5.44%</td>
+          <td class="pos-large">+28.50%</td>
+          <td class="pos-large">+22.78%</td>
+          <td class="pos-large">+33.51%</td>
+        </tr>
+        <tr>
+          <td>High Beta</td>
+          
+          <td class="pos-medium">+1.89%</td>
+          <td class="neg-large">-3.18%</td>
+          <td class="neg-large">-3.18%</td>
+          <td class="pos-large">+27.83%</td>
+          <td class="pos-large">+33.73%</td>
+          <td class="pos-large">+8.96%</td>
+        </tr>
+        <tr>
+          <td>Growth</td>
+          
+          <td class="pos-medium">+1.48%</td>
+          <td class="neg-small">-0.08%</td>
+          <td class="neg-small">-0.08%</td>
+          <td class="pos-large">+10.88%</td>
+          <td class="pos-large">+21.77%</td>
+          <td class="pos-large">+37.01%</td>
+        </tr>
+        <tr>
+          <td>Pure Value</td>
+          
+          <td class="pos-small">+0.32%</td>
+          <td class="pos-medium">+2.03%</td>
+          <td class="pos-medium">+2.03%</td>
+          <td class="pos-large">+13.08%</td>
+          <td class="pos-large">+19.21%</td>
+          <td class="pos-large">+11.65%</td>
+        </tr>
+        <tr>
+          <td>Quality</td>
+          
+          <td class="pos-small">+0.01%</td>
+          <td class="neg-small">-0.44%</td>
+          <td class="neg-small">-0.44%</td>
+          <td class="pos-large">+9.60%</td>
+          <td class="pos-large">+13.17%</td>
+          <td class="pos-large">+22.63%</td>
+        </tr>
+        <tr>
+          <td>Value</td>
+          
+          <td class="neg-small">-0.04%</td>
+          <td class="pos-medium">+1.35%</td>
+          <td class="pos-medium">+1.35%</td>
+          <td class="pos-large">+8.58%</td>
+          <td class="pos-large">+13.96%</td>
+          <td class="pos-large">+11.89%</td>
+        </tr>
+        <tr>
+          <td>Low Volatility</td>
+          
+          <td class="neg-small">-0.17%</td>
+          <td class="pos-medium">+1.31%</td>
+          <td class="pos-medium">+1.31%</td>
+          <td class="pos-large">+3.67%</td>
+          <td class="pos-large">+8.64%</td>
+          <td class="pos-large">+15.65%</td>
+        </tr>
+        <tr>
+          <td>Equal Weight</td>
+          
+          <td class="neg-small">-0.35%</td>
+          <td class="pos-small">+0.66%</td>
+          <td class="pos-small">+0.66%</td>
+          <td class="pos-large">+11.75%</td>
+          <td class="pos-large">+12.38%</td>
+          <td class="pos-large">+12.59%</td>
+        </tr>
+        <tr>
+          <td>Low Vol High Div</td>
+          
+          <td class="neg-small">-0.83%</td>
+          <td class="pos-medium">+1.62%</td>
+          <td class="pos-medium">+1.62%</td>
+          <td class="pos-large">+9.72%</td>
+          <td class="pos-large">+4.47%</td>
+          <td class="pos-large">+17.56%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       S&P 500 SECTOR PERFORMANCE
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="eyebrow">S&amp;P 500 Sector &amp; Industry Performance</div>
+    <div class="section-title">Sector / Market Cap Analysis</div>
+
+    <table class="perf-table">
+      <thead>
+        <tr>
+          <th>S&amp;P 500 Sector</th>
+          <th>WTD</th>
+          <th>MTD</th>
+          <th>QTD</th>
+          <th>YTD</th>
+          <th>2025</th>
+          <th>2024</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Energy</td>
+          
+          <td class="pos-large">+3.35%</td>
+          <td class="pos-large">+3.56%</td>
+          <td class="pos-large">+3.56%</td>
+          <td class="pos-large">+24.02%</td>
+          <td class="pos-large">+9.90%</td>
+          <td class="pos-large">+4.19%</td>
+        </tr>
+        <tr>
+          <td>Info Tech</td>
+          
+          <td class="pos-medium">+2.91%</td>
+          <td class="neg-medium">-2.45%</td>
+          <td class="neg-medium">-2.45%</td>
+          <td class="pos-large">+28.12%</td>
+          <td class="pos-large">+24.81%</td>
+          <td class="pos-large">+22.65%</td>
+        </tr>
+        <tr>
+          <td>Communication Services</td>
+          
+          <td class="pos-small">+0.09%</td>
+          <td class="pos-medium">+2.40%</td>
+          <td class="pos-medium">+2.40%</td>
+          <td class="neg-large">-6.72%</td>
+          <td class="pos-large">+23.27%</td>
+          <td class="pos-large">+35.15%</td>
+        </tr>
+        <tr>
+          <td>Financials</td>
+          
+          <td class="pos-small">+0.04%</td>
+          <td class="pos-large">+3.79%</td>
+          <td class="pos-large">+3.79%</td>
+          <td class="pos-medium">+1.71%</td>
+          <td class="pos-large">+15.88%</td>
+          <td class="pos-large">+30.42%</td>
+        </tr>
+        <tr>
+          <td>Real Estate</td>
+          
+          <td class="neg-small">-0.58%</td>
+          <td class="pos-small">+0.89%</td>
+          <td class="pos-small">+0.89%</td>
+          <td class="pos-large">+10.78%</td>
+          <td class="pos-large">+4.39%</td>
+          <td class="pos-large">+4.27%</td>
+        </tr>
+        <tr>
+          <td>Utilities</td>
+          
+          <td class="neg-small">-0.78%</td>
+          <td class="pos-small">+0.14%</td>
+          <td class="pos-small">+0.14%</td>
+          <td class="pos-large">+7.11%</td>
+          <td class="pos-large">+16.65%</td>
+          <td class="pos-large">+23.43%</td>
+        </tr>
+        <tr>
+          <td>Consumer Discretionary</td>
+          
+          <td class="neg-small">-0.88%</td>
+          <td class="neg-medium">-1.01%</td>
+          <td class="neg-medium">-1.01%</td>
+          <td class="neg-large">-3.16%</td>
+          <td class="pos-large">+7.41%</td>
+          <td class="pos-large">+27.47%</td>
+        </tr>
+        <tr>
+          <td>Industrials</td>
+          
+          <td class="neg-medium">-1.03%</td>
+          <td class="neg-medium">-1.73%</td>
+          <td class="neg-medium">-1.73%</td>
+          <td class="pos-large">+16.98%</td>
+          <td class="pos-large">+20.20%</td>
+          <td class="pos-large">+17.45%</td>
+        </tr>
+        <tr>
+          <td>Healthcare</td>
+          
+          <td class="neg-medium">-1.27%</td>
+          <td class="pos-medium">+1.89%</td>
+          <td class="pos-medium">+1.89%</td>
+          <td class="pos-large">+4.72%</td>
+          <td class="pos-large">+15.43%</td>
+          <td class="pos-medium">+2.23%</td>
+        </tr>
+        <tr>
+          <td>Consumer Staples</td>
+          
+          <td class="neg-medium">-1.67%</td>
+          <td class="pos-small">+0.60%</td>
+          <td class="pos-small">+0.60%</td>
+          <td class="pos-large">+8.28%</td>
+          <td class="pos-medium">+2.44%</td>
+          <td class="pos-large">+11.86%</td>
+        </tr>
+        <tr>
+          <td>Materials</td>
+          
+          <td class="neg-large">-3.01%</td>
+          <td class="neg-small">-0.76%</td>
+          <td class="neg-small">-0.76%</td>
+          <td class="pos-large">+11.22%</td>
+          <td class="pos-large">+11.31%</td>
+          <td class="neg-small">-0.26%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       DISCLAIMER
+  ════════════════════════════════════════ -->
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> This material is provided for <strong>informational and educational purposes only</strong> and does not constitute investment, financial, legal, accounting, or tax advice. The views and opinions expressed are those of the author as of the date of publication and are subject to change without notice based on market and other conditions.</p>
+    <p>This content should not be construed as a <strong>solicitation, offer, or recommendation</strong> to buy or sell any securities or to adopt any particular investment strategy. The information contained herein has been obtained from sources believed to be reliable; however, its accuracy or completeness is not guaranteed.</p>
+    <p>Investing involves risk, including the possible loss of principal. Past performance is not indicative of future results, and no assurance can be given that any investment objectives will be achieved.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <div class="footer">
+    <p>NorthernInvest Technologies Inc. &nbsp;·&nbsp; Daily Market Brief &nbsp;·&nbsp; Thursday, July 09, 2026</p>
+    <p style="margin-top:6px;">
+      <a href="#">Unsubscribe</a> &nbsp;|&nbsp; <a href="#">View Archive</a> &nbsp;|&nbsp; <a href="#">Manage Preferences</a>
+    </p>
+    <p style="margin-top:8px; font-size:10px; opacity:0.5;">Independent. Disciplined. Aligned. &nbsp;·&nbsp; Rooted in Canada. Investing for Generations.</p>
+    <p style="margin-top:6px; font-size:10px; opacity:0.4;">Generated 2026-07-09 10:03 PM IST (2026-07-09 16:33:53 UTC)</p>
+  </div>
+
+</div><!-- /container -->
+</div><!-- /wrapper -->
+</body>
+</html>
