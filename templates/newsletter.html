@@ -3,8 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Weekly Market Brief — {{ date }}</title>
   <link rel="stylesheet" href="newsletter.css">
+  <style>
+    /* Email client optimization */
+    table { border-spacing: 0; border-collapse: collapse; }
+    img { border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: nearest-neighbor; }
+    /* Prevent Outlook from messing with responsive layouts */
+    @media only screen and (max-width: 600px) {
+      body { width: 100% !important; }
+      table { width: 100% !important; }
+      .container { width: 100% !important; }
+    }
+  </style>
 </head>
 <body>
 <div class="wrapper">
