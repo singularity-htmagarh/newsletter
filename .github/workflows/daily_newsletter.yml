@@ -30,7 +30,9 @@ jobs:
         run: |
           if [ -f .env ]; then
             echo "Loading variables from .env file"
-            cat .env >> $GITHUB_ENV
+            export $(cat .env | grep -v '^#' | grep -v '^$' | xargs)
+            # Export to GitHub ENV for subsequent steps
+            cat .env | grep -v '^#' | grep -v '^$' >> $GITHUB_ENV
           else
             echo "Warning: .env file not found"
           fi
@@ -41,22 +43,34 @@ jobs:
           mkdir -p logs/delivery_reports newsletters
 
       - name: Fetch RSS News
-        run: python scripts/fetch_news.py
+        run: |
+          export $(cat .env | grep -v '^#' | grep -v '^$' | xargs)
+          python scripts/fetch_news.py
 
       - name: Fetch Live Market Data
-        run: python scripts/fetch_market_data.py
+        run: |
+          export $(cat .env | grep -v '^#' | grep -v '^$' | xargs)
+          python scripts/fetch_market_data.py
 
       - name: Clean and Deduplicate News
-        run: python scripts/clean_news.py
+        run: |
+          export $(cat .env | grep -v '^#' | grep -v '^$' | xargs)
+          python scripts/clean_news.py
 
       - name: AI Summarization (Groq)
-        run: python scripts/summarize_news.py
+        run: |
+          export $(cat .env | grep -v '^#' | grep -v '^$' | xargs)
+          python scripts/summarize_news.py
 
       - name: Generate Newsletter
-        run: python scripts/generate_newsletter.py
+        run: |
+          export $(cat .env | grep -v '^#' | grep -v '^$' | xargs)
+          python scripts/generate_newsletter.py
 
       - name: Send Email
-        run: python scripts/send_email.py
+        run: |
+          export $(cat .env | grep -v '^#' | grep -v '^$' | xargs)
+          python scripts/send_email.py
 
       - name: Commit Archives
         if: success()
