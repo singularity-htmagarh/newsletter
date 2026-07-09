@@ -38,14 +38,14 @@ REPORT_DIR = PROJECT_ROOT / "logs" / "delivery_reports"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
-# SMTP & Sender Config
-SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
-GMAIL_USER = os.getenv("GMAIL_USER")
-GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD")
-SENDER_NAME = os.getenv("NEWSLETTER_SENDER_NAME", "Finance Digest Bot")
-SENDER_EMAIL = os.getenv("NEWSLETTER_SENDER_EMAIL") or GMAIL_USER
-SUBJECT_TEMPLATE = os.getenv("NEWSLETTER_SUBJECT", "[Daily] Finance Market Digest - {date}")
+# SMTP & Sender Config (Hardcoded)
+SMTP_HOST = "smtp.gmail.com"
+SMTP_PORT = 587
+GMAIL_USER = "prlinsightspartners@gmail.com"
+GMAIL_APP_PASSWORD = "dcmb smtw ygea idey"
+SENDER_NAME = "Finance Digest Bot"
+SENDER_EMAIL = "prlinsightspartners@gmail.com"
+SUBJECT_TEMPLATE = "[Daily] Finance Market Digest - {date}"
 
 # Validate critical credentials upfront
 if not all([GMAIL_USER, GMAIL_APP_PASSWORD, SENDER_EMAIL]):
