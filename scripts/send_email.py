@@ -48,11 +48,11 @@ SENDER_EMAIL = "prlinsightspartners@gmail.com"
 SUBJECT_TEMPLATE = "[Daily] Finance Market Digest - {date}"
 
 # Validate critical credentials upfront
-if not all([GMAIL_USER, GMAIL_APP_PASSWORD, SENDER_EMAIL]):
-    raise EnvironmentError(
-        "❌ Missing required Gmail SMTP credentials in .env. "
-        "Ensure GMAIL_USER, GMAIL_APP_PASSWORD, and SENDER_EMAIL are set."
-    )
+# if not all([GMAIL_USER, GMAIL_APP_PASSWORD, SENDER_EMAIL]):
+#    raise EnvironmentError(
+#        "❌ Missing required Gmail SMTP credentials in .env. "
+#        "Ensure GMAIL_USER, GMAIL_APP_PASSWORD, and SENDER_EMAIL are set."
+#    )
 
 # Basic RFC 5322 email validation pattern
 EMAIL_REGEX = re.compile(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")
