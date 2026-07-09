@@ -41,6 +41,11 @@ MAX_CONCURRENT = int(os.getenv("SUMMARIZE_CONCURRENCY", "5"))
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 client = Groq() if GROQ_API_KEY else None  # reads GROQ_API_KEY automatically
 
+# Fallback fields used when AI summarization is unavailable
+FALLBACK_SUMMARY = "AI summary unavailable — GROQ_API_KEY not configured."
+FALLBACK_WHY_IT_MATTERS = "Unable to assess market significance at this time."
+FALLBACK_MARKET_IMPACT = "Neutral | Market data pending"
+
 # ============================================================================
 # LOGGING SETUP
 # ============================================================================
@@ -87,9 +92,9 @@ def call_groq_with_retry(prompt: str, max_retries: int = 4, base_delay: float = 
     """Call Groq with exponential backoff. Returns parsed JSON or fallback dict."""
     if client is None:
         return {
-            "concise_summary": "AI summary unavailable — GROQ_API_KEY not configured.",
-            "why_it_matters": "Unable to assess market significance at this time.",
-            "market_impact": "Neutral | Market data pending",
+            "concise_summary": FALLBACK_SUMMARY,
+            "why_it_matters": FALLBACK_WHY_IT_MATTERS,
+            "market_impact": FALLBACK_MARKET_IMPACT,
             "ai_status": "skipped",
         }
     attempt = 0
@@ -148,8 +153,8 @@ def call_groq_with_retry(prompt: str, max_retries: int = 4, base_delay: float = 
 
     return {
         "concise_summary": "AI summary unavailable due to processing error.",
-        "why_it_matters": "Unable to assess market significance at this time.",
-        "market_impact": "Neutral | Market data pending",
+        "why_it_matters": FALLBACK_WHY_IT_MATTERS,
+        "market_impact": FALLBACK_MARKET_IMPACT,
         "ai_status": "failed",
     }
 
@@ -226,9 +231,9 @@ def run_summarization_pipeline() -> Optional[Path]:
         fallback_articles = []
         for art in articles_to_process:
             enriched = art.copy()
-            enriched.setdefault("concise_summary", art.get("summary", "Summary unavailable."))
-            enriched.setdefault("why_it_matters", "")
-            enriched.setdefault("market_impact", "Neutral | Market data pending")
+            enriched.setdefault("concise_summary", art.get("summary", FALLBACK_SUMMARY))
+            enriched.setdefault("why_it_matters", FALLBACK_WHY_IT_MATTERS)
+            enriched.setdefault("market_impact", FALLBACK_MARKET_IMPACT)
             enriched["ai_status"] = "skipped"
             fallback_articles.append(enriched)
         payload = {
