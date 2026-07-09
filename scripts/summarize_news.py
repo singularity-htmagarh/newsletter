@@ -38,12 +38,14 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 MAX_CONCURRENT = int(os.getenv("SUMMARIZE_CONCURRENCY", "5"))
 
+# Load GROQ API Key from environment
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    logger = logging.getLogger("summarize_news")
+    logger.critical("❌ GROQ_API_KEY not found in .env file. Please set GROQ_API_KEY in .env")
+    sys.exit(1)
 
-# Hardcoded GROQ API Key
-GROQ_API_KEY = "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"
-
-
-client = Groq(api_key=GROQ_API_KEY)  # Initialize with hardcoded API key
+client = Groq(api_key=GROQ_API_KEY)
 
 # ============================================================================
 # LOGGING SETUP
