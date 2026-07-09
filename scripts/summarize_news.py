@@ -38,10 +38,8 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 MAX_CONCURRENT = int(os.getenv("SUMMARIZE_CONCURRENCY", "5"))
 
-if not os.getenv("GROQ_API_KEY"):
-    raise EnvironmentError("❌ GROQ_API_KEY not set in environment variables.")
-
-client = Groq()  # reads GROQ_API_KEY automatically
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+client = Groq() if GROQ_API_KEY else None  # reads GROQ_API_KEY automatically
 
 # ============================================================================
 # LOGGING SETUP
@@ -215,6 +213,30 @@ def run_summarization_pipeline() -> Optional[Path]:
 
     articles_to_process = articles[:15]
     logger.info(f"📝 Processing top {len(articles_to_process)} articles")
+
+    if not GROQ_API_KEY:
+        logger.warning("⚠️  GROQ_API_KEY not set — skipping AI summarization. Saving articles with fallback fields.")
+        fallback_articles = []
+        for art in articles_to_process:
+            enriched = art.copy()
+            enriched.setdefault("concise_summary", art.get("summary", "Summary unavailable."))
+            enriched.setdefault("why_it_matters", "")
+            enriched.setdefault("market_impact", "Neutral | Market data pending")
+            enriched["ai_status"] = "skipped"
+            fallback_articles.append(enriched)
+        payload = {
+            "metadata": {
+                "summarization_timestamp": datetime.now(timezone.utc).isoformat(),
+                "model_used": "none",
+                "total_processed": len(articles_to_process),
+                "successful_summaries": 0,
+                "pipeline_version": "v2.1.0",
+                "source_file": source_path.name,
+                "provider": "none",
+            },
+            "articles": fallback_articles,
+        }
+        return save_summarized(payload, source_path)
 
     enriched_articles = [None] * len(articles_to_process)
     success_count = 0

@@ -48,11 +48,7 @@ SENDER_EMAIL = os.getenv("NEWSLETTER_SENDER_EMAIL") or GMAIL_USER
 SUBJECT_TEMPLATE = os.getenv("NEWSLETTER_SUBJECT", "[Daily] Finance Market Digest - {date}")
 
 # Validate critical credentials upfront
-if not all([GMAIL_USER, GMAIL_APP_PASSWORD, SENDER_EMAIL]):
-    raise EnvironmentError(
-        "❌ Missing required Gmail SMTP credentials in .env. "
-        "Ensure GMAIL_USER, GMAIL_APP_PASSWORD, and SENDER_EMAIL are set."
-    )
+_SMTP_CREDENTIALS_MISSING = not all([GMAIL_USER, GMAIL_APP_PASSWORD, SENDER_EMAIL])
 
 # Basic RFC 5322 email validation pattern
 EMAIL_REGEX = re.compile(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")
@@ -195,7 +191,14 @@ def send_single_with_retry(server: smtplib.SMTP, msg: MIMEMultipart, to_email: s
 def run_delivery_pipeline() -> bool:
     """Execute secure batch delivery to all validated subscribers."""
     logger.info("🚀 === Starting Newsletter Delivery Pipeline ===")
-    
+
+    if _SMTP_CREDENTIALS_MISSING:
+        logger.warning(
+            "⚠️  Missing required Gmail SMTP credentials (GMAIL_USER, GMAIL_APP_PASSWORD, "
+            "NEWSLETTER_SENDER_EMAIL). Skipping email delivery."
+        )
+        return True
+
     subscribers = load_subscribers()
     if not subscribers:
         logger.warning("⚠️ No subscribers to deliver to. Exiting gracefully.")
