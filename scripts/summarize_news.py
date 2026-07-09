@@ -43,7 +43,7 @@ MAX_CONCURRENT = int(os.getenv("SUMMARIZE_CONCURRENCY", "5"))
 GROQ_API_KEY = "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"
 
 
-client = Groq()  # reads GROQ_API_KEY automatically
+client = Groq(api_key=GROQ_API_KEY)  # Initialize with hardcoded API key
 
 # ============================================================================
 # LOGGING SETUP
